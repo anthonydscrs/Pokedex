@@ -1,46 +1,21 @@
 import PropTypes from "prop-types";
 
-const pokemonList = [
+function PokemonCard({ props }) {
+  const { name, imgSrc } = props;
 
-  {
-  
-      name: "bulbasaur",
-  
-      imgSrc: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  
-    },
-  
-    { name: "charmander",
-      imgSrc:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-  
-    },
-  
-    { name: "squirtle",
-      imgSrc: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-  
-    },
-  
-    { name: "pikachu",
-     imgSrc:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-  
-    },
-
-  ];
-
-function PokemonCard({props}) {
-  const {name, imgSrc} = props;
-
-
-  return (<figure>
-    {pokemonImg === undefined ? <p>???</p> : <img src={pokemonImg} alt={pokemon.name}></img> }
-    <figcaption>{pokemon.name}</figcaption>
-  </figure>);
+  return (
+    <figure>
+      {imgSrc != undefined ? <img src={imgSrc} alt={name}></img> : <p>???</p>}
+      <figcaption>{name}</figcaption>
+    </figure>
+  );
 }
 
-PokemonCard.PropTypes =
-props = PropTypes.shape ( {
-  name: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string.isRequired,
-})
+PokemonCard.propTypes = {
+  props: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
-export default PokemonCard
+export default PokemonCard;
