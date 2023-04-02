@@ -1,15 +1,11 @@
-function Navbar({ count, setCount, pokemonListLength }) {
-    const handleClickNext = () => {
-      setCount(count + 1)
-    };
-    const handleClickPrevious = () => {
-      setCount(count - 1)
-    };
-  
+function Navbar({ count, setCount, pokemonList }) {
+
     return (<nav>
-      {count > 0 ? <button onClick={handleClickPrevious}>Previous</button> : null}
-      {count < pokemonListLength - 1 ? <button onClick={handleClickNext}>Next</button> : null}
-    </nav>)
+      {pokemonList.map((pokemon, index) =>
+        <button key={pokemon.name} onClick={() => setCount(index)}>{pokemon.name}</button >
+      )}
+    </nav >)
   }
+  
   
   export default Navbar
